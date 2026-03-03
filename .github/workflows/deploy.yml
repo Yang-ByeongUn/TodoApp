@@ -56,4 +56,4 @@ jobs:
           --application-name todo-server-deploy
           --deployment-config-name CodeDeployDefault.AllAtOnce
           --deployment-group-name todo-deploy-group
-          --s3-location bucket=todo-server-sss-bucket ,bundleType=tgz,key=$GITHUB_SHA.tar.gz
+          --s3-location bucket=todo-server-sss-bucket,bundleType=tgz,key=$GITHUB_SHA.tar.gz
