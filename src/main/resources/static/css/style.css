@@ -1,0 +1,253 @@
+:root {
+    --primary-color: #6c5ce7;
+    --primary-hover: #5b4bc4;
+    --secondary-color: #00cec9;
+    --danger-color: #ff7675;
+    --success-color: #00b894;
+    --text-color: #2d3436;
+    --bg-gradient: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    --card-bg: #ffffff;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --border-radius: 16px;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    background: var(--bg-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.container {
+    background-color: var(--card-bg);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    font-weight: 800;
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+label {
+    text-align: left;
+    font-weight: 600;
+    color: #636e72;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #dfe6e9;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(108, 92, 231, 0.2);
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(108, 92, 231, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    display: inline-block;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Header & Logout */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid #f1f2f6;
+    padding-bottom: 1rem;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.logout-link {
+    margin: 0;
+    color: #b2bec3;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.logout-link:hover {
+    color: var(--danger-color);
+    text-decoration: none;
+}
+
+/* Todo Form */
+.todo-form {
+    flex-direction: row;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.todo-form input {
+    flex-grow: 1;
+}
+
+.todo-form button {
+    width: auto;
+    padding: 0 1.5rem;
+    white-space: nowrap;
+}
+
+/* Todo List */
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item {
+    background-color: #fff;
+    border: 1px solid #f1f2f6;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.todo-item:hover {
+    transform: translateX(5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.todo-content {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.todo-content.completed {
+    text-decoration: line-through;
+    color: #b2bec3;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-sm {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.btn-complete {
+    background-color: var(--success-color);
+}
+
+.btn-complete:hover {
+    background-color: #00a884;
+    box-shadow: 0 4px 10px rgba(0, 184, 148, 0.3);
+}
+
+.btn-cancel {
+    background-color: #ffeaa7;
+    color: #2d3436;
+}
+
+.btn-cancel:hover {
+    background-color: #fdcb6e;
+    box-shadow: 0 4px 10px rgba(253, 203, 110, 0.3);
+}
+
+.btn-delete {
+    background-color: var(--danger-color);
+}
+
+.btn-delete:hover {
+    background-color: #d63031;
+    box-shadow: 0 4px 10px rgba(255, 118, 117, 0.3);
+}
+
+.error-message {
+    background-color: #ff7675;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(255, 118, 117, 0.2);
+}

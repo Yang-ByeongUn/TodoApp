@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>할 일 목록</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>할 일 목록</h1>
+            <a href="/logout" class="logout-link">로그아웃</a>
+        </div>
+
+        <form action="/todos" method="post" class="todo-form">
+            <input type="text" name="content" placeholder="할 일을 입력하세요" required>
+            <button type="submit">추가</button>
+        </form>
+
+        <ul class="todo-list">
+            <li th:each="todo : ${todos}" class="todo-item">
+                <span th:text="${todo.content}" th:class="${todo.completed} ? 'todo-content completed' : 'todo-content'"></span>
+                <div class="todo-actions">
+                    <form th:action="@{/todos/{id}/complete(id=${todo.id})}" method="post" style="display: inline;">
+                        <input type="hidden" name="completed" th:value="${!todo.completed}">
+                        <button type="submit" th:text="${todo.completed} ? '취소' : '완료'"
+                                th:class="${todo.completed} ? 'btn-sm btn-cancel' : 'btn-sm btn-complete'"></button>
+                    </form>
+                    <form th:action="@{/todos/{id}/delete(id=${todo.id})}" method="post" style="display: inline;">
+                        <button type="submit" class="btn-sm btn-delete">삭제</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
