@@ -1,0 +1,23 @@
+services:
+  my-db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./todo-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: todo-server-database
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-ppassword" ]
+      interval: 5s
+      retries: 15
+      start_period: 30s
+
+  my-spring:
+    image: 151625667874.dkr.ecr.ap-northeast-2.amazonaws.com/instagram-server
+    ports:
+      - "8080:8080"
+    depends_on:
+      my-db:
+        condition: service_healthy

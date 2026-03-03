@@ -1,7 +1,8 @@
 #!/bin/bash
 
 echo "--------------- 서버 배포 시작 -----------------"
-cd /home/ubuntu/todo-server
-sudo fuser -k -n tcp 8080 || true
-nohup java -jar project.jar > ./output.log 2>&1 &
+docker stop todo-server || true
+docker rm todo-server || true
+docker pull 151625667874.dkr.ecr.ap-northeast-2.amazonaws.com/todo-server-ecr/todo-server:latest
+docker run -d --name todo-server -p 8080:8080 151625667874.dkr.ecr.ap-northeast-2.amazonaws.com/todo-server-ecr/todo-server:latest
 echo "--------------- 서버 배포 끝 -----------------"
