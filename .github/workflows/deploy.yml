@@ -41,10 +41,10 @@ jobs:
         run: docker build -t todo-server .
 
       - name: Docker 이미지에 Tag 붙이기
-        run: docker tag todo-server ${{ steps.login-ecr.outputs.registry }}/todo-server:latest
+        run: docker tag todo-server ${{ steps.login-ecr.outputs.registry }}/todo-server-ecr:latest
 
       - name: ECR에 Docker 이미지 Push하기
-        run: docker push ${{ steps.login-ecr.outputs.registry }}/todo-server:latest
+        run: docker push ${{ steps.login-ecr.outputs.registry }}/todo-server-ecr:latest
 
       - name: SSH로 EC2에 접속하기
         uses: appleboy/ssh-action@v1.0.3
@@ -56,5 +56,5 @@ jobs:
           script: |
             docker stop todo-server || true
             docker rm todo-server || true
-            docker pull ${{ steps.login-ecr.outputs.registry }}/todo-server:latest
-            docker run -d --name todo-server -p 8080:8080 ${{ steps.login-ecr.outputs.registry }}/todo-server:latest
+            docker pull ${{ steps.login-ecr.outputs.registry }}/todo-server-ecr:latest
+            docker run -d --name todo-server -p 8080:8080 ${{ steps.login-ecr.outputs.registry }}/todo-server-ecr:latest
